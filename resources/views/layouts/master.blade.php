@@ -60,6 +60,10 @@
             <!-- Page Content -->
             @yield('content')
             <!-- END Page Content -->
+            <div class="row col-12 m-4">
+                <input class="form-input" type="text"><br>
+                <p class="typing"><span id="userName"></span> typing</p>
+            </div>
         </main>
         <!-- END Main Container -->
 
@@ -71,8 +75,49 @@
     <!-- END Page Container -->
 
     <!-- All JS Files -->
-    <script src="/js/codebase.min.js"></script>
+    {{-- <script src="/js/codebase.min.js"></script> --}}
     <script src="/js/app.js"></script>
+    <script src="/js/all.js"></script>
+
+    <script>
+
+        @if(auth()->user()->id == 1)
+        
+        Echo.private('users.id')
+            .listen('UserCreated', function(e) {
+                // console.log(e.user.email);
+        });
+
+        @endif
+
+        
+        $('input').on('keydown', function(){
+        let channel = Echo.private('chat')
+
+        setTimeout( () => {
+            channel.whisper('typing', {
+            userName: '{{ auth()->user()->name }}',
+            typing: true
+            })
+        }, 300)
+        });
+
+        Echo.private('chat')
+        .listenForWhisper('typing', (e) => {
+            // console.log(e);
+            $('#userName').text(e.userName)
+            e.typing ? $('.typing').show() : $('.typing').hide();
+            setTimeout( () => {
+                $('.typing').hide();
+            }, 1000);
+        })
+
+        setTimeout( () => {
+            $('.typing').hide();
+        }, 100);
+
+    </script>
+
 
     {{-- custom scripts --}}
     @yield('scripts')

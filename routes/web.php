@@ -11,7 +11,12 @@
 |
 */
 
+use App\Events\UserCreated;
+use App\User;
+
 Route::get('/', function () {
+    // $user = User::find(1);
+    // event(new UserCreated($user));
     return view('index');
 });
 

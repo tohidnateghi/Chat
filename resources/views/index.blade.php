@@ -27,7 +27,7 @@
                 <div class="js-chat-head block-content block-content-full block-sticky-options bg-gd-sea text-center">
                     <img class="img-avatar img-avatar-thumb" src="/img/avatars/avatar1.jpg" alt="">
                     <div class="font-w600 mt-15 mb-5 text-white">
-                        Megan Ti <span class="font-italic text-white-op">Designer</span>
+                        {{ auth()->user()->name}}
                     </div>
                 </div>
                 <!-- END Chat Header -->
@@ -40,7 +40,7 @@
                 <div class="js-chat-form block-content block-content-full block-content-sm bg-body-light">
                     <form action="be_comp_chat_single.html" method="post">
                         <input class="js-chat-input form-control" type="text" data-target-chat-id="4"
-                            placeholder="Type your message and hit enter..">
+                            placeholder="متن پیام را اینجا بنویسید..">
                     </form>
                 </div>
                 <!-- END Chat Input -->
@@ -59,10 +59,8 @@
         var userID = '{{ auth()->user()->id }}';
         Echo.private('chat')
         .listenForWhisper('message', (e) => {
-            console.log(e);
-            if(e.userID != userID) {
-                BeCompChat.addMessage(4, e.text);
-            }
+            // console.log(e);
+            BeCompChat.addMessage(4, e.text);
             
         });
 

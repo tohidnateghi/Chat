@@ -46,6 +46,7 @@
                 <!-- END Chat Input -->
             </div>
             <!-- END Single Chat #4 -->
+            <button id="leave" class="btn btn-alt-danger">اتمام چت</button>
         </div>
         
     </div>
@@ -62,6 +63,11 @@
             // console.log(e);
             BeCompChat.addMessage(4, e.text);
             
+        });
+
+        $('#leave').click( function() {
+            $('.js-chat-input').prop('disabled', true);
+            Echo.leave('chat');
         });
 
     </script>

@@ -22679,3 +22679,15 @@ div.tagsinput span.tag a:hover {
 .custom-control-danger .custom-control-input:checked:disabled~.custom-control-label::before {
     background-color: #ef5350
 }
+
+.chat-self {
+    width: fit-content;
+    float: right;
+    clear: both;
+}
+
+.chat-other {
+    width: fit-content;
+    float: left;
+    clear: both;
+}

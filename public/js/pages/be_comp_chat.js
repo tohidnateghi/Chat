@@ -9,9 +9,9 @@ var BeCompChat = function() {
     var lWindow, lHeader, lFooter, cContainer, cHeight, cHead, cTalk, cPeople, cform, cTimeout;
 
     // Message Classes
-    var classesMsgBase      = 'rounded font-w600 p-10 mb-10 animated fadeIn',
-        classesMsgSelf      = 'ml-50 bg-primary-lighter text-primary-darker',
-        classesMsgOther     = 'mr-50 bg-flat-light',
+    var classesMsgBase      = 'rounded font-w600 p-5 mb-10 animated fadeIn',
+        classesMsgSelf      = 'ml-50 bg-primary-light text-primary-dark chat-self',
+        classesMsgOther     = 'mr-50 bg-primary-lighter text-primary-darker chat-other',
         classesMsgHeader    = 'font-size-sm font-italic text-muted text-center mt-20 mb-10';
 
     // Init chat
